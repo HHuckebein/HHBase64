@@ -38,7 +38,6 @@
 		73F302AD1CB2329A008D8B4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73F302B01CB2329A008D8B4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73F302B21CB2329A008D8B4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		73F302B81CB232A8008D8B4D /* Base64.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Base64.playground; sourceTree = "<group>"; };
 		73F302B91CB23561008D8B4D /* Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
 		73F302BF1CB235F2008D8B4D /* Base64Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Base64Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73F302C11CB235F2008D8B4D /* Base64Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64Tests.swift; sourceTree = "<group>"; };
@@ -100,7 +99,6 @@
 				73F302AA1CB2329A008D8B4D /* Main.storyboard */,
 				73F302AD1CB2329A008D8B4D /* Assets.xcassets */,
 				73F302AF1CB2329A008D8B4D /* LaunchScreen.storyboard */,
-				73F302B81CB232A8008D8B4D /* Base64.playground */,
 				73F302B21CB2329A008D8B4D /* Info.plist */,
 				73F302B91CB23561008D8B4D /* Base64.swift */,
 			);
