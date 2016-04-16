@@ -7,14 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7390CD811CC22BC50063FF7B /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 7390CD801CC22BC50063FF7B /* Cartfile */; };
+		73CECFA91CC22E3400BD693B /* Hamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CECFA81CC22E3400BD693B /* Hamcrest.framework */; };
 		73F302A71CB2329A008D8B4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F302A61CB2329A008D8B4D /* AppDelegate.swift */; };
 		73F302A91CB2329A008D8B4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F302A81CB2329A008D8B4D /* ViewController.swift */; };
 		73F302AC1CB2329A008D8B4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73F302AA1CB2329A008D8B4D /* Main.storyboard */; };
 		73F302AE1CB2329A008D8B4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73F302AD1CB2329A008D8B4D /* Assets.xcassets */; };
 		73F302B11CB2329A008D8B4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73F302AF1CB2329A008D8B4D /* LaunchScreen.storyboard */; };
+		73F302BA1CB23561008D8B4D /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F302B91CB23561008D8B4D /* Base64.swift */; };
+		73F302C21CB235F2008D8B4D /* Base64Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F302C11CB235F2008D8B4D /* Base64Tests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		73F302C41CB235F2008D8B4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 73F3029B1CB23299008D8B4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73F302A21CB23299008D8B4D;
+			remoteInfo = Base64;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		7390CD801CC22BC50063FF7B /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		73CECFA81CC22E3400BD693B /* Hamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hamcrest.framework; path = Carthage/Build/iOS/Hamcrest.framework; sourceTree = "<group>"; };
 		73F302A31CB2329A008D8B4D /* Base64.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Base64.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73F302A61CB2329A008D8B4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73F302A81CB2329A008D8B4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +38,11 @@
 		73F302AD1CB2329A008D8B4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73F302B01CB2329A008D8B4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73F302B21CB2329A008D8B4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73F302B81CB232A8008D8B4D /* Base64.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Base64.playground; sourceTree = "<group>"; };
+		73F302B91CB23561008D8B4D /* Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
+		73F302BF1CB235F2008D8B4D /* Base64Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Base64Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		73F302C11CB235F2008D8B4D /* Base64Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64Tests.swift; sourceTree = "<group>"; };
+		73F302C31CB235F2008D8B4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,14 +53,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		73F302BC1CB235F2008D8B4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73CECFA91CC22E3400BD693B /* Hamcrest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73CECFAB1CC22E4A00BD693B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73CECFA81CC22E3400BD693B /* Hamcrest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		73F3029A1CB23299008D8B4D = {
 			isa = PBXGroup;
 			children = (
+				7390CD801CC22BC50063FF7B /* Cartfile */,
 				73F302A51CB2329A008D8B4D /* Base64 */,
+				73F302C01CB235F2008D8B4D /* Base64Tests */,
 				73F302A41CB2329A008D8B4D /* Products */,
+				73CECFAB1CC22E4A00BD693B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				73F302A31CB2329A008D8B4D /* Base64.app */,
+				73F302BF1CB235F2008D8B4D /* Base64Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,9 +100,20 @@
 				73F302AA1CB2329A008D8B4D /* Main.storyboard */,
 				73F302AD1CB2329A008D8B4D /* Assets.xcassets */,
 				73F302AF1CB2329A008D8B4D /* LaunchScreen.storyboard */,
+				73F302B81CB232A8008D8B4D /* Base64.playground */,
 				73F302B21CB2329A008D8B4D /* Info.plist */,
+				73F302B91CB23561008D8B4D /* Base64.swift */,
 			);
 			path = Base64;
+			sourceTree = "<group>";
+		};
+		73F302C01CB235F2008D8B4D /* Base64Tests */ = {
+			isa = PBXGroup;
+			children = (
+				73F302C11CB235F2008D8B4D /* Base64Tests.swift */,
+				73F302C31CB235F2008D8B4D /* Info.plist */,
+			);
+			path = Base64Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +136,25 @@
 			productReference = 73F302A31CB2329A008D8B4D /* Base64.app */;
 			productType = "com.apple.product-type.application";
 		};
+		73F302BE1CB235F2008D8B4D /* Base64Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73F302C61CB235F2008D8B4D /* Build configuration list for PBXNativeTarget "Base64Tests" */;
+			buildPhases = (
+				73F302BB1CB235F2008D8B4D /* Sources */,
+				73F302BC1CB235F2008D8B4D /* Frameworks */,
+				73F302BD1CB235F2008D8B4D /* Resources */,
+				73CECFAD1CC22F1B00BD693B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				73F302C51CB235F2008D8B4D /* PBXTargetDependency */,
+			);
+			name = Base64Tests;
+			productName = Base64Tests;
+			productReference = 73F302BF1CB235F2008D8B4D /* Base64Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -96,6 +167,10 @@
 				TargetAttributes = {
 					73F302A21CB23299008D8B4D = {
 						CreatedOnToolsVersion = 7.3;
+					};
+					73F302BE1CB235F2008D8B4D = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 73F302A21CB23299008D8B4D;
 					};
 				};
 			};
@@ -113,6 +188,7 @@
 			projectRoot = "";
 			targets = (
 				73F302A21CB23299008D8B4D /* Base64 */,
+				73F302BE1CB235F2008D8B4D /* Base64Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -124,11 +200,36 @@
 			files = (
 				73F302B11CB2329A008D8B4D /* LaunchScreen.storyboard in Resources */,
 				73F302AE1CB2329A008D8B4D /* Assets.xcassets in Resources */,
+				7390CD811CC22BC50063FF7B /* Cartfile in Resources */,
 				73F302AC1CB2329A008D8B4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		73F302BD1CB235F2008D8B4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73CECFAD1CC22F1B00BD693B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Hamcrest.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		73F3029F1CB23299008D8B4D /* Sources */ = {
@@ -136,11 +237,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				73F302A91CB2329A008D8B4D /* ViewController.swift in Sources */,
+				73F302BA1CB23561008D8B4D /* Base64.swift in Sources */,
 				73F302A71CB2329A008D8B4D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		73F302BB1CB235F2008D8B4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73F302C21CB235F2008D8B4D /* Base64Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		73F302C51CB235F2008D8B4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73F302A21CB23299008D8B4D /* Base64 */;
+			targetProxy = 73F302C41CB235F2008D8B4D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		73F302AA1CB2329A008D8B4D /* Main.storyboard */ = {
@@ -269,6 +387,38 @@
 			};
 			name = Release;
 		};
+		73F302C71CB235F2008D8B4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Base64Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.Base64Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Base64.app/Base64";
+			};
+			name = Debug;
+		};
+		73F302C81CB235F2008D8B4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Base64Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.Base64Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Base64.app/Base64";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -288,6 +438,16 @@
 				73F302B71CB2329A008D8B4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73F302C61CB235F2008D8B4D /* Build configuration list for PBXNativeTarget "Base64Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73F302C71CB235F2008D8B4D /* Debug */,
+				73F302C81CB235F2008D8B4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
