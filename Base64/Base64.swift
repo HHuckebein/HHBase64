@@ -34,9 +34,7 @@ public enum Base64Coding {
         }
     }
     
-    // MARK: Public API
-    
-    public func decodedValue(forIndex idx: Int, inString: String) -> UInt8? {
+    func decodedValue(forIndex idx: Int, inString: String) -> UInt8? {
         let index = inString.utf8.startIndex.advancedBy(idx)
         if let idxPoint = alphabet.indexOf(inString.utf8[index]) {
             return UInt8(idxPoint) & UInt8.max
@@ -44,17 +42,13 @@ public enum Base64Coding {
         return nil
     }
     
-    public func stringContainsIllegalCharacters(string: String) -> Bool {
+    func stringContainsIllegalCharacters(string: String) -> Bool {
         if let regEx = self.validityRegEx {
             return regEx.numberOfMatchesInString(string, options: [], range: NSMakeRange(0, string.characters.count)) == 1 ? false : true
         }
         return false
     }
 
-    public subscript (position: Int) -> UInt8  {
-        precondition(position >= 0 && position < alphabet.count, "out-of-range access on a alphabet")
-        return alphabet[position]
-    }
 }
 
 private extension Base64Coding {
@@ -62,7 +56,7 @@ private extension Base64Coding {
         switch self {
         case .Standard:
             do {
-                let regex = try NSRegularExpression(pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$", options: .CaseInsensitive)
+                let regex = try NSRegularExpression(pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$", options: .CaseInsensitive)
                 return regex
             } catch {
                 return nil
@@ -70,12 +64,19 @@ private extension Base64Coding {
             
         case .URLSafe:
             do {
-                let regex = try NSRegularExpression(pattern: "^(?:[A-Za-z0-9-_]{4})*(?:[A-Za-z0-9-_]{2}|[A-Za-z0-9-_]{3})?$", options: .CaseInsensitive)
+                let regex = try NSRegularExpression(pattern: "^(?:[A-Za-z0-9-_]{4})*(?:[A-Za-z0-9-_]{2}|[A-Za-z0-9-_]{3}=|[A-Za-z0-9-_]{4})$", options: .CaseInsensitive)
                 return regex
             } catch {
                 return nil
             }
         }
+    }
+}
+
+public extension Base64Coding {
+    subscript (position: Int) -> UInt8  {
+        precondition(position >= 0 && position < alphabet.count, "out-of-range access on a alphabet")
+        return alphabet[position]
     }
 }
 
@@ -87,6 +88,8 @@ public enum Base64Error: ErrorType {
     case ContainsIllegalCharacters, CodingError
 }
 
+/** Provides base-64 en-/decoding for the standard and url safe alphabet.
+ */
 public struct Base64 {
     public static func decode(string: String, coding: Base64Coding = .Standard) throws -> NSData? {
         if string.isEmpty { return nil }
@@ -175,7 +178,7 @@ public struct Base64 {
         
         if i < inputArray.count {
             let base0 = inputArray[i]
-            let base1 = inputArray[i + 1]
+            let base1 = i == inputArray.count - 1 ? 0 : inputArray[i + 1]
 
             let value0 = coding[Int((base0 >> 2) & 0x3F)]
             let value1 = coding[Int((base0 & 0x3) << 4)]
