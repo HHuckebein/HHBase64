@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				7390CD801CC22BC50063FF7B /* Cartfile */,
-				73F302A51CB2329A008D8B4D /* Base64 */,
+				73F302A51CB2329A008D8B4D /* Source */,
 				73F302C01CB235F2008D8B4D /* Base64Tests */,
 				73F302A41CB2329A008D8B4D /* Products */,
 				73CECFAB1CC22E4A00BD693B /* Frameworks */,
@@ -91,17 +91,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		73F302A51CB2329A008D8B4D /* Base64 */ = {
+		73F302A51CB2329A008D8B4D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				73F302B91CB23561008D8B4D /* Base64.swift */,
 				73F302A61CB2329A008D8B4D /* AppDelegate.swift */,
 				73F302A81CB2329A008D8B4D /* ViewController.swift */,
 				73F302AA1CB2329A008D8B4D /* Main.storyboard */,
 				73F302AD1CB2329A008D8B4D /* Assets.xcassets */,
 				73F302AF1CB2329A008D8B4D /* LaunchScreen.storyboard */,
 				73F302B21CB2329A008D8B4D /* Info.plist */,
-				73F302B91CB23561008D8B4D /* Base64.swift */,
 			);
+			name = Source;
 			path = Base64;
 			sourceTree = "<group>";
 		};

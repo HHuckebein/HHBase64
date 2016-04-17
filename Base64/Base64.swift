@@ -8,6 +8,11 @@
 
 import Foundation
 
+/** Base64Coding provides alphabet handling and base functionality
+ to proof that the string is a valid base64 encoded string via
+ `validityRegEX` (Regular expression tested on [RegExr](http://regexr.com/))
+ and means to get a value for a given index and vice versa.
+ */
 public enum Base64Coding {
     case Standard, URLSafe
     
@@ -89,6 +94,8 @@ public enum Base64Error: ErrorType {
 }
 
 /** Provides base-64 en-/decoding for the standard and url safe alphabet.
+ Encoding and Decoding follows RFC4648 which means e.g. that an error
+ is thrown if an encoded strings contains illegal characters.
  */
 public struct Base64 {
     public static func decode(string: String, coding: Base64Coding = .Standard) throws -> NSData? {
