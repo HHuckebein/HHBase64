@@ -64,7 +64,7 @@ private extension Base64Coding {
             
         case .URLSafe:
             do {
-                let regex = try NSRegularExpression(pattern: "^(?:[A-Za-z0-9-_]{4})*(?:[A-Za-z0-9-_]{2}|[A-Za-z0-9-_]{3}=|[A-Za-z0-9-_]{4})$", options: .CaseInsensitive)
+                let regex = try NSRegularExpression(pattern: "^(?:[A-Za-z0-9-_]{4})*(?:[A-Za-z0-9-_]{2}|[A-Za-z0-9-_]{3}|[A-Za-z0-9-_]{4})$", options: .CaseInsensitive)
                 return regex
             } catch {
                 return nil

@@ -16,10 +16,10 @@ class Base64Tests: XCTestCase {
     let illegalEncodedStrings_URLSafeAlphabet  = ["+A", "/\\Q", "QUJDR=VmZ2hpams"]
     
     let legalEncodedStandardCharacterStrings = ["Zg==", "Zm8=", "Zm9v", "Zm9vYg==", "Zm9vYmE=", "Zm9vYmFy", "MA==", "QQ==",  "QUJDREVGR0g=", "QUJDREVGR0hJ", "QTFCMkMzRDRINQ==", "QTFCMkMzRDRINStaL2cz"]
-    let legalDecodedStandardCharacterStrings = ["f",    "fo",    "foo",  "foob",     "fooba",    "foobar",   "0",     "A",    "ABCDEFGH",     "ABCDEFGHI",    "A1B2C3D4H5",       "A1B2C3D4H5+Z/g3"]
+    let legalDecodedStandardCharacterStrings = ["f",    "fo",   "foo",  "foob",     "fooba",    "foobar",   "0",     "A",    "ABCDEFGH",     "ABCDEFGHI",    "A1B2C3D4H5",       "A1B2C3D4H5+Z/g3"]
     
-    let legalEncodedURLSafeCharacterStrings  = ["MA", "QQ", "QUJDREVmZ2hpams", "QTBCQ0RFZmdoaWprMQ", "QTFCMkMzRDRhMWIyYzNiNA", "QTFCMkMzRDRINStaL2cz"]
-    let legalDecodedURLSafeCharacterStrings  = ["0", "A", "ABCDEfghijk", "A0BCDEfghijk1", "A1B2C3D4a1b2c3b4", "A1B2C3D4H5+Z/g3"]
+    let legalEncodedURLSafeCharacterStrings  = ["Zg", "Zm8", "Zm9v", "Zm9vYg", "Zm9vYmE", "Zm9vYmFy", "MA", "QQ", "QUJDREVmZ2hpams", "QTBCQ0RFZmdoaWprMQ", "QTFCMkMzRDRhMWIyYzNiNA", "QTFCMkMzRDRINStaL2cz"]
+    let legalDecodedURLSafeCharacterStrings  = ["f",  "fo",  "foo",  "foob",   "fooba",   "foobar",   "0",  "A",  "ABCDEfghijk",     "A0BCDEfghijk1",      "A1B2C3D4a1b2c3b4",       "A1B2C3D4H5+Z/g3"]
     
     override func setUp() {
         super.setUp()
@@ -108,7 +108,7 @@ class Base64Tests: XCTestCase {
                 }
                 
             } catch {
-                XCTFail()
+                XCTFail("\(error)")
             }
         }
     }
@@ -125,7 +125,7 @@ class Base64Tests: XCTestCase {
                 }
                 
             } catch {
-                XCTFail()
+                XCTFail("\(error)")
             }
         }
     }
@@ -185,7 +185,7 @@ class Base64Tests: XCTestCase {
                 XCTFail()
             }
         } catch {
-            XCTFail()
+            XCTFail("\(error)")
         }
     }
     
@@ -204,7 +204,7 @@ class Base64Tests: XCTestCase {
                 XCTFail()
             }
         } catch {
-            XCTFail()
+            XCTFail("\(error)")
         }
     }
     
@@ -223,7 +223,7 @@ class Base64Tests: XCTestCase {
                 XCTFail()
             }
         } catch {
-            XCTFail()
+            XCTFail("\(error)")
         }
     }
     
