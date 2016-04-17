@@ -51,11 +51,9 @@ public enum Base64Coding {
         return false
     }
 
-    public subscript (position: Int) -> UInt8?  {
-        if position < alphabet.count {
-            return alphabet[position]
-        }
-        return nil
+    public subscript (position: Int) -> UInt8  {
+        precondition(position >= 0 && position < alphabet.count, "out-of-range access on a alphabet")
+        return alphabet[position]
     }
 }
 
@@ -91,9 +89,7 @@ public enum Base64Error: ErrorType {
 
 public struct Base64 {
     public static func decode(string: String, coding: Base64Coding = .Standard) throws -> NSData? {
-        if string.isEmpty {
-            return nil
-        }
+        if string.isEmpty { return nil }
         
         if coding.stringContainsIllegalCharacters(string) == true {
             throw Base64Error.ContainsIllegalCharacters
@@ -152,7 +148,7 @@ public struct Base64 {
         return decodedBytes.count != 0 ? NSData(bytes: decodedBytes, length: decodedBytes.count) : nil
     }
     
-    public static func encode(data: NSData, coding: Base64Coding = .Standard, padding: Base64Padding? = .On) throws -> String? {
+    public static func encode(data: NSData, coding: Base64Coding = .Standard, padding: Base64Padding? = .On) -> String? {
         if data.length == 0 { return nil }
         
         let inputArray = Array(UnsafeBufferPointer(start: UnsafePointer<UInt8>(data.bytes), count: data.length))
@@ -163,12 +159,11 @@ public struct Base64 {
             let base0 = inputArray[i]
             let base1 = inputArray[i + 1]
             let base2 = inputArray[i + 2]
-            guard   let value0 = coding[Int((base0 >> 2) & 0x3F)],
-                    let value1 = coding[Int(((base0 & 0x3) << 4) | ((base1 & 0xF0) >> 4))],
-                    let value2 = coding[Int(((base1 & 0xF) << 2) | ((base2 & 0xC0) >> 6))],
-                    let value3 = coding[Int(base2 & 0x3F)] else {
-                    throw Base64Error.CodingError
-            }
+            
+            let value0 = coding[Int((base0 >> 2) & 0x3F)]
+            let value1 = coding[Int(((base0 & 0x3) << 4) | ((base1 & 0xF0) >> 4))]
+            let value2 = coding[Int(((base1 & 0xF) << 2) | ((base2 & 0xC0) >> 6))]
+            let value3 = coding[Int(base2 & 0x3F)]
 
             bytes.append(value0)
             bytes.append(value1)
@@ -182,13 +177,10 @@ public struct Base64 {
             let base0 = inputArray[i]
             let base1 = inputArray[i + 1]
 
-            guard   let value0 = coding[Int((base0 >> 2) & 0x3F)],
-                    let value1 = coding[Int((base0 & 0x3) << 4)],
-                    let value2 = coding[Int((base0 & 0x3) << 4 | ((base1 & 0xF0) >> 4))],
-                    let value3 = coding[Int((base1 & 0xF) << 2)]
-                    else {
-                    throw Base64Error.CodingError
-            }
+            let value0 = coding[Int((base0 >> 2) & 0x3F)]
+            let value1 = coding[Int((base0 & 0x3) << 4)]
+            let value2 = coding[Int((base0 & 0x3) << 4 | ((base1 & 0xF0) >> 4))]
+            let value3 = coding[Int((base1 & 0xF) << 2)]
             
             bytes.append(value0)
             
