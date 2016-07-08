@@ -196,7 +196,7 @@ public struct Base64 {
             
             if i == inputArray.count - 1 {
                 bytes.append(value1)
-                if let _ = padding {
+                if let padding = padding where padding == .On {
                     bytes.append("=".utf8.first!)
                 }
             } else {
@@ -204,7 +204,7 @@ public struct Base64 {
                 bytes.append(value3)
             }
             
-            if let _ = padding {
+            if let padding = padding where padding == .On {
                 bytes.append("=".utf8.first!)
             }
         }
