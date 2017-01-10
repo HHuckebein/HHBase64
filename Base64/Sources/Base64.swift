@@ -10,11 +10,14 @@ import Foundation
 
 /** Base64Coding provides alphabet handling and base functionality
  to proof that the string is a valid base64 encoded string via
- `validityRegEX` (Regular expression tested on [RegExr](http://regexr.com/))
- and means to get a value for a given index and vice versa.
+ `validityRegEX` (Regular expression tested on [RegExr](http://regexr.com/)).
  */
 public enum Base64Coding {
-    case standard, urlSafe
+    /** The default when encoding/decoding(iOS compatible) */
+    case standard
+
+    /** to be used when dealing with URI */
+    case urlSafe
     
     var alphabet: [UInt8] {
         switch self {
@@ -39,14 +42,28 @@ public enum Base64Coding {
         }
     }
     
-    func decodedValue(forIndex idx: Int, inString: String) -> UInt8? {
-        let index = inString.utf8.index(inString.utf8.startIndex, offsetBy: idx)
-        if let idxPoint = alphabet.index(of: inString.utf8[index]) {
+    /** Finds, for a given character at index `idx` the corresponding
+     translated value out of the alphabet.
+         
+    - parameter idx: The character index.
+    - parameter string: The string itself.
+    - returns: The corresponding translated value.
+    */
+    func decodedValue(forIndex idx: Int, inString string: String) -> UInt8? {
+        let index = string.utf8.index(string.utf8.startIndex, offsetBy: idx)
+        if let idxPoint = alphabet.index(of: string.utf8[index]) {
             return UInt8(idxPoint) & UInt8.max
         }
         return nil
     }
     
+    /** Returns wether a given string contains only the allowed characters.
+     Ignore padding if decoding is .urlSafe.
+     
+    - parameter string: The string object to be decoded.
+    - parameter ignorePadding: Determines if character check ends before padding characters.
+    - returns: Wether the string contains only allowed characters.
+    */
     func stringContainsIllegalCharacters(_ string: String, ignorePadding: Bool = false) -> Bool {
         if let regEx = self.validityRegEx {
             var range = NSMakeRange(0, string.characters.count)
@@ -61,10 +78,10 @@ public enum Base64Coding {
         }
         return false
     }
-
 }
 
 private extension Base64Coding {
+    /** The validation regular expression according to the coding case. */
     var validityRegEx: NSRegularExpression? {
         switch self {
         case .standard:
@@ -94,11 +111,19 @@ public extension Base64Coding {
 }
 
 public enum Base64Padding {
-    case on, off
+    /** Add padding character if necessary. */
+    case on
+    
+    /** Omit the final padding step, once encoding is complete. */
+    case off
 }
 
 public enum Base64Error: Error {
-    case containsIllegalCharacters, codingError
+    /** Thrown when the input string contains characters not allowed for the given coding case. */
+    case containsIllegalCharacters
+    
+    /** When alphabet handling fails. */
+    case codingError
 }
 
 /** Provides base-64 en-/decoding for the standard and url safe alphabet.
@@ -107,6 +132,13 @@ public enum Base64Error: Error {
  When decoding .urlSafe encoded strings padding characters are ignored.
  */
 public struct Base64 {
+    /** Decode a base64 encoded string.
+     
+    - parameter string: The input string.
+    - parameter coding: The decoding standard. Defaults to .standard.
+    - returns: The decoded data object.
+    - Throws: Throws an `Base64Error` error.
+    */
     public static func decode(_ string: String, coding: Base64Coding = .standard) throws -> Data? {
         if string.isEmpty { return nil }
         
@@ -167,6 +199,13 @@ public struct Base64 {
         return decodedBytes.count != 0 ? Data(bytes: UnsafePointer<UInt8>(decodedBytes), count: decodedBytes.count) : nil
     }
     
+    /** Encode some data of type `Data`.
+     
+    - parameter data: The input data.
+    - parameter coding: The decoding standard. Defaults to .standard.
+    - parameter padding: Add padding character if necessary. Defaults to .on.
+    - returns: A base64 encoded string. In case of failure nil.
+    */
     public static func encode(_ data: Data, coding: Base64Coding = .standard, padding: Base64Padding = .on) -> String? {
         if data.count == 0 { return nil }
         
