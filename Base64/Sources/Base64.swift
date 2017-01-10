@@ -47,9 +47,17 @@ public enum Base64Coding {
         return nil
     }
     
-    func stringContainsIllegalCharacters(_ string: String) -> Bool {
+    func stringContainsIllegalCharacters(_ string: String, ignorePadding: Bool = false) -> Bool {
         if let regEx = self.validityRegEx {
-            return regEx.numberOfMatches(in: string, options: [], range: NSMakeRange(0, string.characters.count)) == 1 ? false : true
+            var range = NSMakeRange(0, string.characters.count)
+            if ignorePadding {
+                if string.hasSuffix("==") {
+                    range.length = string.characters.count - 2
+                } else if string.hasSuffix("=") {
+                    range.length = string.characters.count - 1
+                }
+            }
+            return regEx.numberOfMatches(in: string, options: [], range: range) == 1 ? false : true
         }
         return false
     }
@@ -96,12 +104,13 @@ public enum Base64Error: Error {
 /** Provides base-64 en-/decoding for the standard and url safe alphabet.
  Encoding and Decoding follows RFC4648 which means e.g. that an error
  is thrown if an encoded strings contains illegal characters.
+ When decoding .urlSafe encoded strings padding characters are ignored.
  */
 public struct Base64 {
     public static func decode(_ string: String, coding: Base64Coding = .standard) throws -> Data? {
         if string.isEmpty { return nil }
         
-        if coding.stringContainsIllegalCharacters(string) == true {
+        if coding.stringContainsIllegalCharacters(string, ignorePadding: coding == .urlSafe) == true {
             throw Base64Error.containsIllegalCharacters
         }
         
@@ -158,7 +167,7 @@ public struct Base64 {
         return decodedBytes.count != 0 ? Data(bytes: UnsafePointer<UInt8>(decodedBytes), count: decodedBytes.count) : nil
     }
     
-    public static func encode(_ data: Data, coding: Base64Coding = .standard, padding: Base64Padding? = .on) -> String? {
+    public static func encode(_ data: Data, coding: Base64Coding = .standard, padding: Base64Padding = .on) -> String? {
         if data.count == 0 { return nil }
         
         let inputArray = Array(UnsafeBufferPointer(start: (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count), count: data.count))
@@ -196,7 +205,7 @@ public struct Base64 {
             
             if i == inputArray.count - 1 {
                 bytes.append(value1)
-                if let padding = padding, padding == .on {
+                if padding == .on {
                     bytes.append("=".utf8.first!)
                 }
             } else {
@@ -204,7 +213,7 @@ public struct Base64 {
                 bytes.append(value3)
             }
             
-            if let padding = padding, padding == .on {
+            if padding == .on {
                 bytes.append("=".utf8.first!)
             }
         }
