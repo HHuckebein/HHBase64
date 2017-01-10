@@ -35,48 +35,48 @@ class Base64Tests: XCTestCase {
     
     
     func test_StandardAlphabet_containsIllegalCharacter() {
-        let coding = Base64Coding.Standard
+        let coding = Base64Coding.standard
         for string in illegalEncodedStrings_StandardAlphabet {
             assertThat(coding.stringContainsIllegalCharacters(string) == true)
         }
     }
     
     func test_URLSafeAlphabet_containsIllegalCharacter() {
-        let coding = Base64Coding.URLSafe
+        let coding = Base64Coding.urlSafe
         for string in illegalEncodedStrings_URLSafeAlphabet {
             assertThat(coding.stringContainsIllegalCharacters(string) == true)
         }
     }
     
     func test_StandardAlphabet_containsLegalCharacter() {
-        let coding = Base64Coding.Standard
+        let coding = Base64Coding.standard
         for string in legalEncodedStandardCharacterStrings {
             assertThat(coding.stringContainsIllegalCharacters(string) == false)
         }
     }
     
     func test_URLSafeAlphabet_containsLegalCharacter() {
-        let coding = Base64Coding.URLSafe
+        let coding = Base64Coding.urlSafe
         for string in legalEncodedURLSafeCharacterStrings {
             assertThat(coding.stringContainsIllegalCharacters(string) == false)
         }
     }
     
     func test_StandardAlphabet_UnicodeScalar () {
-        let coding = Base64Coding.Standard
+        let coding = Base64Coding.standard
         let a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
         for index in 0..<coding.alphabet.count {
-            let characterA = UnicodeScalar(a.utf8[a.utf8.startIndex.advancedBy(index)])
+            let characterA = UnicodeScalar(a.utf8[a.utf8.index(a.utf8.startIndex, offsetBy: index)])
             let characterB = UnicodeScalar(coding[index])
             assertThat(characterA == characterB)
         }
     }
     
     func test_URLSafeAlphabet_UnicodeScalar () {
-        let coding = Base64Coding.URLSafe
+        let coding = Base64Coding.urlSafe
         let a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_="
         for index in 0..<coding.alphabet.count {
-            let characterA = UnicodeScalar(a.utf8[a.utf8.startIndex.advancedBy(index)])
+            let characterA = UnicodeScalar(a.utf8[a.utf8.index(a.utf8.startIndex, offsetBy: index)])
             let characterB = UnicodeScalar(coding[index])
             assertThat(characterA == characterB)
         }
@@ -86,13 +86,13 @@ class Base64Tests: XCTestCase {
     
     func test_decode_throwsIfIllegalCharacters_StandardAlphabet () {
         for string in illegalEncodedStrings_StandardAlphabet {
-            assertThrows(try Base64.decode(string), Base64Error.ContainsIllegalCharacters)
+            assertThrows(try Base64.decode(string), Base64Error.containsIllegalCharacters)
         }
     }
     
     func test_decode_throwsIfIllegalCharacters_URLSafeAlphabet () {
         for string in illegalEncodedStrings_URLSafeAlphabet {
-            assertThrows(try Base64.decode(string, coding: .URLSafe), Base64Error.ContainsIllegalCharacters)
+            assertThrows(try Base64.decode(string, coding: .urlSafe), Base64Error.containsIllegalCharacters)
         }
     }
     
@@ -101,7 +101,7 @@ class Base64Tests: XCTestCase {
             let eString = legalEncodedStandardCharacterStrings[idx]
             let dString = legalDecodedStandardCharacterStrings[idx]
             do {
-                if let data = try Base64.decode(eString), let string = String(data: data, encoding: NSUTF8StringEncoding)  {
+                if let data = try Base64.decode(eString), let string = String(data: data, encoding: String.Encoding.utf8)  {
                     assertThat(string == dString)
                 } else {
                     XCTFail()
@@ -118,7 +118,7 @@ class Base64Tests: XCTestCase {
             let eString = legalEncodedURLSafeCharacterStrings[idx]
             let dString = legalDecodedURLSafeCharacterStrings[idx]
             do {
-                if let data = try Base64.decode(eString, coding: .URLSafe), let string = String(data: data, encoding: NSUTF8StringEncoding)  {
+                if let data = try Base64.decode(eString, coding: .urlSafe), let string = String(data: data, encoding: String.Encoding.utf8)  {
                     assertThat(string == dString)
                 } else {
                     XCTFail()
@@ -136,10 +136,10 @@ class Base64Tests: XCTestCase {
     //
     func test_encode_URLSafe_Data01 () {
         let uInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03, 0xD9, 0x7E]
-        let data  = NSData(bytes: uInt8Array, length: uInt8Array.count)
+        let data  = Data(bytes: UnsafePointer<UInt8>(uInt8Array), count: uInt8Array.count)
         let expectedBase64 = "FPucA9l-"
         
-        if let encodedString = Base64.encode(data, coding: .URLSafe, padding: nil) {
+        if let encodedString = Base64.encode(data, coding: .urlSafe, padding: nil) {
             assertThat(encodedString == expectedBase64)
         } else {
             XCTFail()
@@ -148,10 +148,10 @@ class Base64Tests: XCTestCase {
     
     func test_encode_URLSafe_Data02 () {
         let uInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03, 0xD9]
-        let data  = NSData(bytes: uInt8Array, length: uInt8Array.count)
+        let data  = Data(bytes: UnsafePointer<UInt8>(uInt8Array), count: uInt8Array.count)
         let expectedBase64 = "FPucA9k"
         
-        if let encodedString = Base64.encode(data, coding: .URLSafe, padding: nil) {
+        if let encodedString = Base64.encode(data, coding: .urlSafe, padding: nil) {
             assertThat(encodedString == expectedBase64)
         } else {
             XCTFail()
@@ -160,10 +160,10 @@ class Base64Tests: XCTestCase {
     
     func test_encode_URLSafe_Data03 () {
         let uInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03]
-        let data  = NSData(bytes: uInt8Array, length: uInt8Array.count)
+        let data  = Data(bytes: UnsafePointer<UInt8>(uInt8Array), count: uInt8Array.count)
         let expectedBase64 = "FPucAw"
         
-        if let encodedString = Base64.encode(data, coding: .URLSafe, padding: nil) {
+        if let encodedString = Base64.encode(data, coding: .urlSafe, padding: nil) {
             assertThat(encodedString == expectedBase64)
         } else {
             XCTFail()
@@ -175,7 +175,7 @@ class Base64Tests: XCTestCase {
             let orgUInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03, 0xD9, 0x7E]
             let encodedString = "FPucA9l-"
             
-            if let data = try Base64.decode(encodedString, coding: .URLSafe) {
+            if let data = try Base64.decode(encodedString, coding: .urlSafe) {
                 let decArray = arrayFromData(data)
                 assertThat(decArray, hasCount(orgUInt8Array.count))
                 for index in 0..<decArray.count {
@@ -194,7 +194,7 @@ class Base64Tests: XCTestCase {
             let orgUInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03, 0xD9]
             let encodedString = "FPucA9k"
             
-            if let data = try Base64.decode(encodedString, coding: .URLSafe) {
+            if let data = try Base64.decode(encodedString, coding: .urlSafe) {
                 let decArray = arrayFromData(data)
                 assertThat(decArray, hasCount(orgUInt8Array.count))
                 for index in 0..<decArray.count {
@@ -213,7 +213,7 @@ class Base64Tests: XCTestCase {
             let orgUInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03]
             let encodedString = "FPucAw"
             
-            if let data = try Base64.decode(encodedString, coding: .URLSafe) {
+            if let data = try Base64.decode(encodedString, coding: .urlSafe) {
                 let decArray = arrayFromData(data)
                 assertThat(decArray, hasCount(orgUInt8Array.count))
                 for index in 0..<decArray.count {
@@ -229,7 +229,7 @@ class Base64Tests: XCTestCase {
     
     func test_encode_Standard_Data01 () {
         let uInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03, 0xD9, 0x7E]
-        let data  = NSData(bytes: uInt8Array, length: uInt8Array.count)
+        let data  = Data(bytes: UnsafePointer<UInt8>(uInt8Array), count: uInt8Array.count)
         let expectedBase64 = "FPucA9l+"
         
         if let encodedString = Base64.encode(data) {
@@ -241,7 +241,7 @@ class Base64Tests: XCTestCase {
     
     func test_encode_Standard_Data02 () {
         let uInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03, 0xD9]
-        let data  = NSData(bytes: uInt8Array, length: uInt8Array.count)
+        let data  = Data(bytes: UnsafePointer<UInt8>(uInt8Array), count: uInt8Array.count)
         let expectedBase64 = "FPucA9k="
         
         if let encodedString = Base64.encode(data) {
@@ -253,7 +253,7 @@ class Base64Tests: XCTestCase {
     
     func test_encode_Standard_Data03 () {
         let uInt8Array:[UInt8] = [0x14, 0xFB, 0x9C, 0x03]
-        let data  = NSData(bytes: uInt8Array, length: uInt8Array.count)
+        let data  = Data(bytes: UnsafePointer<UInt8>(uInt8Array), count: uInt8Array.count)
         let expectedBase64 = "FPucAw=="
         
         if let encodedString = Base64.encode(data) {
@@ -322,10 +322,10 @@ class Base64Tests: XCTestCase {
     
     // MARK: Helper
     
-    func arrayFromData(data: NSData) -> [UInt8] {
-        let count = data.length / sizeof(UInt8)
-        var array = [UInt8](count: count, repeatedValue: 0)
-        data.getBytes(&array, length:count * sizeof(UInt8))
+    func arrayFromData(_ data: Data) -> [UInt8] {
+        let count = data.count / MemoryLayout<UInt8>.size
+        var array = [UInt8](repeating: 0, count: count)
+        (data as NSData).getBytes(&array, length:count * MemoryLayout<UInt8>.size)
         
         return array
     }
