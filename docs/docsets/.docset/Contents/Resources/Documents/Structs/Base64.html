@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Base64 Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Base64" class="dashAnchor"></a>
+    <a title="Base64 Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (83% documented)</p>
+        <p class="header-right"><a href="https://github.com/HHuckebein/Base64.git"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Base64 Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Base64Coding.html">Base64Coding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Base64Error.html">Base64Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Base64Padding.html">Base64Padding</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Base64.html">Base64</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Base64</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Base64</span></code></pre>
+
+                </div>
+              </div>
+            <p>Provides base-64 en-/decoding for the standard and url safe alphabet.
+ Encoding and Decoding follows RFC4648 which means e.g. that an error
+ is thrown if an encoded strings contains illegal characters.
+ When decoding .urlSafe encoded strings padding characters are ignored.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFV6Base646Base646decodeFzTSS6codingOS_12Base64Coding_GSqV10Foundation4Data_"></a>
+                    <a name="//apple_ref/swift/Method/decode(_:coding:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFV6Base646Base646decodeFzTSS6codingOS_12Base64Coding_GSqV10Foundation4Data_">decode(_:coding:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Decode a base64 encoded string.</p>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    Throws an <code><a href="../Enums/Base64Error.html">Base64Error</a></code> error.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">decode</span><span class="p">(</span><span class="n">_</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">coding</span><span class="p">:</span> <span class="kt"><a href="../Enums/Base64Coding.html">Base64Coding</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">standard</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Data</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input string.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coding</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The decoding standard. Defaults to .standard.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The decoded data object.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFV6Base646Base646encodeFTV10Foundation4Data6codingOS_12Base64Coding7paddingOS_13Base64Padding_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/encode(_:coding:padding:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFV6Base646Base646encodeFTV10Foundation4Data6codingOS_12Base64Coding7paddingOS_13Base64Padding_GSqSS_">encode(_:coding:padding:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Encode some data of type <code>Data</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">encode</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span> <span class="nv">coding</span><span class="p">:</span> <span class="kt"><a href="../Enums/Base64Coding.html">Base64Coding</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">standard</span><span class="p">,</span> <span class="nv">padding</span><span class="p">:</span> <span class="kt"><a href="../Enums/Base64Padding.html">Base64Padding</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">on</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The input data.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coding</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The decoding standard. Defaults to .standard.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>padding</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Add padding character if necessary. Defaults to .on.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A base64 encoded string. In case of failure nil.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2016 <a class="link" href="https://berndrabe.de" target="_blank" rel="external">RABE_IT Services</a> under <a class="link" href="https://github.com/HHuckebein/Base64/blob/master/LICENSE.txt" target="_blank" rel="external">open source license</a>.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
