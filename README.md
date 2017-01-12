@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/HHuckebein/Base64.svg?branch=master)](https://travis-ci.org/HHuckebein/Base64)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![codecov](https://codecov.io/gh/HHuckebein/Base64/branch/master/graph/badge.svg)](https://codecov.io/gh/HHuckebein/Base64)__
+[![codecov](https://codecov.io/gh/HHuckebein/Base64/branch/master/graph/badge.svg)](https://codecov.io/gh/HHuckebein/Base64)
  
 Base64 encoding/decoding.
 Provides .urlSafe/.standard (iOS compatible) encoding of type Data and decoding of type String.
