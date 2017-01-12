@@ -1,10 +1,33 @@
 language: objective-c
 osx_image: xcode8.2
 
-script:
- - xcodebuild -project Base64.xcodeproj -target Base64 -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
- - xcodebuild test -project Base64.xcodeproj -scheme Base64 -destination 'platform=iOS Simulator,name=iPhone,OS=8.1'
+env:
+   global:
+
+   - PROJECT="Base64.xcodeproj"
+   - IOS_SCHEME="Base64"
+   - IOS_SDK=iphonesimulator10.1
+
+   matrix:
+   - DESTINATION="OS=10.0,name=iPhone 6s" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
+   - DESTINATION="OS=10.1,name=iPhone 7"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
+
 
 notifications:
   slack:
     secure: cojfZA+kAIRH0ACSGFNXqY32Mp3In+9zsdqOXyIyalZIJ0S+zA3dPjQCkkn7LcyfNvB2i5nFC6cVa0iGbY5WUiyGS0rtP8IW1vEXWwoh9ulI1N6OJCKfBIZL1MnmlMWMm84KH+8LWURlZ3n1pJheQYqQ8jY0Ycg8kX9mHQezUesnsU9z6iNyWQhNKJ8DKsDRI3c0J2amO8bLIcCui48U6QSziyaLqmoYCkuaVQpBgThgrudx+s5WvcTK4h4yHMZ1SjC+8siDjG8TGobvUJkk8VV0ZN6bmFVKYbyyXrATA42AD2aoO52JuGfiySaeHqlynBb7hBbZwvgx0OOFMJgRsxzIFq1f8cIY7Boti2fcl4WnPg6EbKVKI6mdCkvANkDP/hIYS8sUXu2O0dgHF2YJTE1HrWu0J26Pcf2y7ayxaBHx+0PE5qzx7q4W7nW29WuhIDq9o5QJxvJAWMVaVZMAY17ngu+bbwbrw91faXn80SNpDxHa0tC5N1wG1vjzmEdHF1xWaBxfLqb6DswuxvzR+3KRbH9CxlHt8hVxMGH3Hdidl6z3Tt0huE7de1AAr50xRsXORTPOncSEZp2sZsbLJqN661fxmdMoTrhnrJfncXEKAeZVOOolYFNahjLkXvZEOfzuotWikLT2b/E0AruIsvdSwe237Df4AqcJ5QkfJUY=
+
+script:
+script:
+- set -o pipefail
+
+- if [ $RUN_TESTS == "YES" ]; then
+      xcodebuild analyze test -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+  else
+      xcodebuild build analyze -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+  fi
+
+# Build for reporting test coverage
+- if [ $RUN_TESTS == "YES" ]; then
+      xcodebuild test -project Baset64.xcodeproj -scheme Baset64 -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO;
+  fi
