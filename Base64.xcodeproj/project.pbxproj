@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		732AE7FE1E2549F800486FAB /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 732AE7FC1E2549F800486FAB /* README.md */; };
-		732AE7FF1E2549F800486FAB /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 732AE7FD1E2549F800486FAB /* LICENSE.txt */; };
 		7390CD811CC22BC50063FF7B /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 7390CD801CC22BC50063FF7B /* Cartfile */; };
 		73BDD6561CE0C84700271E82 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BDD6551CE0C84700271E82 /* Base64.swift */; };
 		73CECFA91CC22E3400BD693B /* Hamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CECFA81CC22E3400BD693B /* Hamcrest.framework */; };
@@ -216,7 +214,6 @@
 				73F302B11CB2329A008D8B4D /* LaunchScreen.storyboard in Resources */,
 				73F302AE1CB2329A008D8B4D /* Assets.xcassets in Resources */,
 				7390CD811CC22BC50063FF7B /* Cartfile in Resources */,
-				732AE7FF1E2549F800486FAB /* LICENSE.txt in Resources */,
 				73F302AC1CB2329A008D8B4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,7 +251,6 @@
 			files = (
 				73F302A91CB2329A008D8B4D /* ViewController.swift in Sources */,
 				73BDD6561CE0C84700271E82 /* Base64.swift in Sources */,
-				732AE7FE1E2549F800486FAB /* README.md in Sources */,
 				73F302A71CB2329A008D8B4D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
