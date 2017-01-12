@@ -33,7 +33,7 @@ script:
 
 # Build for reporting test coverage
 - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -project Base64.xcodeproj -scheme Base64 -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO | xcpretty -c;;
+      xcodebuild test -project Base64.xcodeproj -scheme Base64 -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO | xcpretty -c;
   fi
 
 after_success:
