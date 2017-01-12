@@ -1,19 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/bernd/Documents/iPhoneDev/Projects/Public/Base64/Base64/Sources/Base64.swift",
-      "line": 114,
-      "symbol": "Base64Padding",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/bernd/Documents/iPhoneDev/Projects/Public/Base64/Base64/Sources/Base64.swift",
-      "line": 122,
-      "symbol": "Base64Error",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/bernd/Documents/iPhoneDev/Projects/Public/Base64"
 }

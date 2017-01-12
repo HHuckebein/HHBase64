@@ -13,7 +13,7 @@
     <a title="  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (83% documented)</p>
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/HHuckebein/Base64.git"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -57,7 +57,9 @@
             
             <a href='#base64' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='base64'>Base64</h1>
 
-<hr>
+<p><a href="https://travis-ci.org/HHuckebein/Base64"><img src="https://travis-ci.org/HHuckebein/Base64.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
+<a href="https://codecov.io/gh/HHuckebein/Base64"><img src="https://codecov.io/gh/HHuckebein/Base64/branch/master/graph/badge.svg" alt="codecov"></a></p>
 
 <p>Base64 encoding/decoding.
 Provides .urlSafe/.standard (iOS compatible) encoding of type Data and decoding of type String.
@@ -74,6 +76,27 @@ When decoding padding is ignored if you choose .urlSafe decoding.</p>
 <pre class="highlight swift"><code><span class="kt">Base64</span><span class="o">.</span><span class="nf">decode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nv">coding</span><span class="p">:</span> <span class="o">.</span><span class="n">urlSafe</span><span class="p">)</span>
 <span class="kt">Base64</span><span class="o">.</span><span class="nf">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">// .standard is default</span>
 </code></pre>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<a href='#installation-with-carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='installation-with-carthage'>Installation with Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.</p>
+
+<p>You can install Carthage with <a href="http://brew.sh/">Homebrew</a> using the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>brew update
+<span class="gp">$ </span>brew install carthage
+</code></pre>
+
+<p>To integrate Base64 into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "HHuckebein/Base64"
+</code></pre>
+
+<p>Run <code>carthage</code> to build the framework and drag the built <code>Base64.framework</code> into your Xcode project.</p>
+<a href='#author' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='author'>Author</h2>
+
+<p>RABE_IT Services, <a href="mailto:development@berndrabe.de">development@berndrabe.de</a></p>
+<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+
+<p>Base64 is available under the MIT license. See the LICENSE file for more info.</p>
 
           </section>
         </section>

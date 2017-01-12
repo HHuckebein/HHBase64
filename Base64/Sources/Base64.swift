@@ -110,6 +110,8 @@ public extension Base64Coding {
     }
 }
 
+/** Defines, wether padding character will be added eventually.
+ */
 public enum Base64Padding {
     /** Add padding character if necessary. */
     case on
@@ -118,6 +120,8 @@ public enum Base64Padding {
     case off
 }
 
+/** Possible errors thrown during decoding.
+ */
 public enum Base64Error: Error {
     /** Thrown when the input string contains characters not allowed for the given coding case. */
     case containsIllegalCharacters
