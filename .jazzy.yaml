@@ -1,7 +1,6 @@
 author: RABE_IT Services
 author_url: https://berndrabe.de
 github_url: https://github.com/HHuckebein/Base64.git
-exclude: [Base64/AppDelegate.swift, Base64/ViewController.swift]
 copyright: '© 2016 [RABE_IT Services](https://berndrabe.de) under [open source license](https://github.com/HHuckebein/Base64/blob/master/LICENSE.txt).'
 clean: true
 

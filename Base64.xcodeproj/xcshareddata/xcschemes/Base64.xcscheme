@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73F302A21CB23299008D8B4D"
-               BuildableName = "Base64.app"
+               BlueprintIdentifier = "736D02BC1E2A016600FB458C"
+               BuildableName = "Base64.framework"
                BlueprintName = "Base64"
                ReferencedContainer = "container:Base64.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73F302BE1CB235F2008D8B4D"
+               BlueprintIdentifier = "736D02C51E2A016600FB458C"
                BuildableName = "Base64Tests.xctest"
                BlueprintName = "Base64Tests"
                ReferencedContainer = "container:Base64.xcodeproj">
@@ -43,8 +43,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73F302A21CB23299008D8B4D"
-            BuildableName = "Base64.app"
+            BlueprintIdentifier = "736D02BC1E2A016600FB458C"
+            BuildableName = "Base64.framework"
             BlueprintName = "Base64"
             ReferencedContainer = "container:Base64.xcodeproj">
          </BuildableReference>
@@ -62,16 +62,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73F302A21CB23299008D8B4D"
-            BuildableName = "Base64.app"
+            BlueprintIdentifier = "736D02BC1E2A016600FB458C"
+            BuildableName = "Base64.framework"
             BlueprintName = "Base64"
             ReferencedContainer = "container:Base64.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -81,16 +80,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73F302A21CB23299008D8B4D"
-            BuildableName = "Base64.app"
+            BlueprintIdentifier = "736D02BC1E2A016600FB458C"
+            BuildableName = "Base64.framework"
             BlueprintName = "Base64"
             ReferencedContainer = "container:Base64.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
