@@ -47,6 +47,8 @@
 		736D02CD1E2A016600FB458C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		736D02D91E2A034300FB458C /* Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
 		736D030F1E2A065800FB458C /* Hamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hamcrest.framework; path = Carthage/Build/iOS/Hamcrest.framework; sourceTree = "<group>"; };
+		736D03131E2A0C0400FB458C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		736D03141E2A0C0400FB458C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,8 @@
 		736D02B31E2A016600FB458C = {
 			isa = PBXGroup;
 			children = (
+				736D03131E2A0C0400FB458C /* README.md */,
+				736D03141E2A0C0400FB458C /* LICENSE.txt */,
 				736D02BF1E2A016600FB458C /* Sources */,
 				736D02CA1E2A016600FB458C /* Base64Tests */,
 				736D02BE1E2A016600FB458C /* Products */,
