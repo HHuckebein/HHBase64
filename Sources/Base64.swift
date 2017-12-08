@@ -66,12 +66,12 @@ public enum Base64Coding {
     */
     func stringContainsIllegalCharacters(_ string: String, ignorePadding: Bool = false) -> Bool {
         if let regEx = self.validityRegEx {
-            var range = NSMakeRange(0, string.characters.count)
+            var range = NSMakeRange(0, string.count)
             if ignorePadding {
                 if string.hasSuffix("==") {
-                    range.length = string.characters.count - 2
+                    range.length = string.count - 2
                 } else if string.hasSuffix("=") {
-                    range.length = string.characters.count - 1
+                    range.length = string.count - 1
                 }
             }
             return regEx.numberOfMatches(in: string, options: [], range: range) == 1 ? false : true
@@ -151,7 +151,8 @@ public struct Base64 {
         }
         
         // don't treat padding characters
-        var unreadBytes = string.characters.filter{ String($0) != "=" }.count
+        let unreadBytesArray: [Character] = string.filter({ return String($0) != "="})
+        var unreadBytes = unreadBytesArray.count
 
         var base = 0
         var decodedBytes = [UInt8]()
@@ -223,8 +224,14 @@ public struct Base64 {
             let base2 = inputArray[i + 2]
             
             let value0 = coding[Int((base0 >> 2) & 0x3F)]
-            let value1 = coding[Int(((base0 & 0x3) << 4) | ((base1 & 0xF0) >> 4))]
-            let value2 = coding[Int(((base1 & 0xF) << 2) | ((base2 & 0xC0) >> 6))]
+            
+            var first = Int((base0 & 0x3) << 4)
+            var second = Int((base1 & 0xF0) >> 4)
+            let value1 = coding[first | second]
+            
+            first = Int((base1 & 0xF) << 2)
+            second = Int((base2 & 0xC0) >> 6)
+            let value2 = coding[first | second]
             let value3 = coding[Int(base2 & 0x3F)]
 
             bytes.append(value0)
@@ -241,7 +248,10 @@ public struct Base64 {
 
             let value0 = coding[Int((base0 >> 2) & 0x3F)]
             let value1 = coding[Int((base0 & 0x3) << 4)]
-            let value2 = coding[Int((base0 & 0x3) << 4 | ((base1 & 0xF0) >> 4))]
+            
+            let first = Int((base0 & 0x3) << 4)
+            let second = Int((base1 & 0xF0) >> 4)
+            let value2 = coding[first | second]
             let value3 = coding[Int((base1 & 0xF) << 2)]
             
             bytes.append(value0)
@@ -260,6 +270,6 @@ public struct Base64 {
                 bytes.append("=".utf8.first!)
             }
         }
-        return bytes.count == 0 ? nil : String(bytes: bytes, encoding: String.Encoding.utf8)
+        return bytes.count == 0 ? nil : String(bytes: bytes, encoding: .utf8)
     }
 }
