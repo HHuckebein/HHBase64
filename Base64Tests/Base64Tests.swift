@@ -34,10 +34,43 @@ class Base64Tests: XCTestCase {
     // MARK: Alphabet
     
     
+    func test_decode_StandardAlphabet_success() {
+        let coding = Base64Coding.standard
+        let string = "ABCDEFGEHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+        for (index, _) in string.utf8.enumerated() {
+            assertThat(coding.decodedValue(forIndex: index, inString: string), present())
+        }
+    }
+    
+    func test_decode_StandardAlphabet_failure() {
+        let coding = Base64Coding.standard
+        let string = "😀💃#_´?"
+        for (index, _) in string.utf8.enumerated() {
+            assertThat(coding.decodedValue(forIndex: index, inString: string), nilValue())
+        }
+    }
+    
     func test_StandardAlphabet_containsIllegalCharacter() {
         let coding = Base64Coding.standard
         for string in illegalEncodedStrings_StandardAlphabet {
             assertThat(coding.stringContainsIllegalCharacters(string) == true)
+        }
+    }
+    
+    func test_decode_URLSafeAlphabet_success() {
+        let coding = Base64Coding.urlSafe
+        let string = "ABCDEFGEHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
+        for (index, _) in string.utf8.enumerated() {
+            assertThat(coding.decodedValue(forIndex: index, inString: string), present())
+        }
+    }
+    
+    func test_decode_URLSafeAlphabet_failure() {
+        let coding = Base64Coding.urlSafe
+        let string = "😀💃#´+:"
+        for (index, value) in string.utf8.enumerated() {
+            print(String(value))
+            print(assertThat(coding.decodedValue(forIndex: index, inString: string), nilValue()))
         }
     }
     

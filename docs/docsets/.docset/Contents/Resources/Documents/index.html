@@ -28,7 +28,7 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/Base64Coding.html">Base64Coding</a>
@@ -42,7 +42,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Structs.html">Structs</a>
+            <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/Base64.html">Base64</a>
@@ -55,7 +55,7 @@
         <section>
           <section class="section">
             
-            <a href='#base64' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='base64'>Base64</h1>
+            <h1 id='base64' class='heading'>Base64</h1>
 
 <p><a href="https://travis-ci.org/HHuckebein/Base64"><img src="https://travis-ci.org/HHuckebein/Base64.svg?branch=master" alt="Build Status"></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
@@ -65,19 +65,19 @@
 Provides .urlSafe/.standard (iOS compatible) encoding of type Data and decoding of type String.
 You can, when encoding, ask for padding.
 When decoding padding is ignored if you choose .urlSafe decoding.</p>
-<a href='#how-to-use-base64' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='how-to-use-base64'>How to use Base64</h2>
-<a href='#encoding' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='encoding'>Encoding</h3>
+<h2 id='how-to-use-base64' class='heading'>How to use Base64</h2>
+<h3 id='encoding' class='heading'>Encoding</h3>
 <pre class="highlight swift"><code><span class="kt">Base64</span><span class="o">.</span><span class="nf">encode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nv">coding</span><span class="p">:</span> <span class="o">.</span><span class="n">urlSafe</span><span class="p">)</span>
 <span class="kt">Base64</span><span class="o">.</span><span class="nf">encode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nv">coding</span><span class="p">:</span> <span class="o">.</span><span class="n">urlSafe</span><span class="p">,</span> <span class="nv">padding</span><span class="p">:</span> <span class="o">.</span><span class="n">off</span><span class="p">)</span>
 
 <span class="kt">Base64</span><span class="o">.</span><span class="nf">encode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">// .standard is default as is .on for padding</span>
 </code></pre>
-<a href='#decoding' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='decoding'>Decoding</h3>
+<h3 id='decoding' class='heading'>Decoding</h3>
 <pre class="highlight swift"><code><span class="kt">Base64</span><span class="o">.</span><span class="nf">decode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nv">coding</span><span class="p">:</span> <span class="o">.</span><span class="n">urlSafe</span><span class="p">)</span>
 <span class="kt">Base64</span><span class="o">.</span><span class="nf">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">// .standard is default</span>
 </code></pre>
-<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
-<a href='#installation-with-carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='installation-with-carthage'>Installation with Carthage</h3>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='installation-with-carthage' class='heading'>Installation with Carthage</h3>
 
 <p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.</p>
 
@@ -91,10 +91,10 @@ When decoding padding is ignored if you choose .urlSafe decoding.</p>
 </code></pre>
 
 <p>Run <code>carthage</code> to build the framework and drag the built <code>Base64.framework</code> into your Xcode project.</p>
-<a href='#author' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='author'>Author</h2>
+<h2 id='author' class='heading'>Author</h2>
 
 <p>RABE_IT Services, <a href="mailto:development@berndrabe.de">development@berndrabe.de</a></p>
-<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+<h2 id='license' class='heading'>License</h2>
 
 <p>Base64 is available under the MIT license. See the LICENSE file for more info.</p>
 
@@ -102,7 +102,7 @@ When decoding padding is ignored if you choose .urlSafe decoding.</p>
         </section>
         <section id="footer">
           <p>© 2016 <a class="link" href="https://berndrabe.de" target="_blank" rel="external">RABE_IT Services</a> under <a class="link" href="https://github.com/HHuckebein/Base64/blob/master/LICENSE.txt" target="_blank" rel="external">open source license</a>.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
