@@ -2,13 +2,10 @@ language: objective-c
 osx_image: xcode9.2
 
 env:
-- PROJECT=Base64.xcodeproj IOS_SCHEME=Base64 IOS_SDK=iphonesimulator11.2
-
-matrix:
-- DESTINATION="OS=10.0,name=iPhone 6s" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
-- DESTINATION="OS=10.1,name=iPhone 7"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
-- DESTINATION="OS=11.1,name=iPhone 7"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
-- DESTINATION="OS=11.2,name=iPhone 8"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
+- PROJECT=Base64.xcodeproj IOS_SCHEME=Base64 IOS_SDK=iphonesimulator11.2 DESTINATION="OS=10.0,name=iPhone 6s" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
+- PROJECT=Base64.xcodeproj IOS_SCHEME=Base64 IOS_SDK=iphonesimulator11.2 DESTINATION="OS=10.1,name=iPhone 7"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
+- PROJECT=Base64.xcodeproj IOS_SCHEME=Base64 IOS_SDK=iphonesimulator11.2 DESTINATION="OS=11.1,name=iPhone 7"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
+- PROJECT=Base64.xcodeproj IOS_SCHEME=Base64 IOS_SDK=iphonesimulator11.2 DESTINATION="OS=11.2,name=iPhone 8"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
 
 before_install:
 - brew install carthage || brew outdated carthage || brew upgrade carthage
