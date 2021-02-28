@@ -1,15 +1,15 @@
-# Base64
+# HHBase64
 
-[![Build Status](https://travis-ci.org/HHuckebein/Base64.svg?branch=master)](https://travis-ci.org/HHuckebein/Base64)
+[![Swift](https://github.com/HHuckebein/IBAN/actions/workflows/swift.yml/badge.svg)](https://github.com/HHuckebein/IBAN/actions/workflows/swift.yml)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![codecov](https://codecov.io/gh/HHuckebein/Base64/branch/master/graph/badge.svg)](https://codecov.io/gh/HHuckebein/Base64)
+[![codecov](https://codecov.io/gh/HHuckebein/HHBase64/branch/master/graph/badge.svg)](https://codecov.io/gh/HHuckebein/HHBase64)
  
 Base64 encoding/decoding.
 Provides .urlSafe/.standard (iOS compatible) encoding of type Data and decoding of type String.
 You can, when encoding, ask for padding.
 When decoding padding is ignored if you choose .urlSafe decoding.
  
-## How to use Base64
+## How to use HHBase64
 ### Encoding
 ```swift
 Base64.encode(data, coding: .urlSafe)
@@ -39,11 +39,22 @@ $ brew install carthage
 To integrate Base64 into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "HHuckebein/Base64"
+github "HHuckebein/HHBase64"
 ```
 
-Run `carthage` to build the framework and drag the built `Base64.framework` into your Xcode project.
+Run `carthage` to build the framework and drag the built `HHBase64.framework` into your Xcode project.
 
+### Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
+
+Once you have your Swift package set up, add HHBase64 as a dependency by adding it to the `dependencies` value of your `Package.swift`.
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/HHuckebein/HHBase64", .upToNextMajor(from: "1.0.0"))
+]
+```
 
 ## Author
 

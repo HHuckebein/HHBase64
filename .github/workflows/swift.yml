@@ -1,0 +1,23 @@
+name: Swift
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: swift build
+    - name: Run tests
+      run: swift test --enable-code-coverage
+    - name: Prepare Code Coverage Data
+      run: xcrun llvm-cov export -format="lcov" .build/debug/HHBase64PackageTests.xctest/Contents/MacOS/HHBase64PackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
+    - name: Publish Coverage Data
+      run: bash <(curl https://codecov.io/bash)
